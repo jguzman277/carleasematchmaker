@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-sm-6">
+    <h3>User Types</h3>
+  </div>
+
+  <div class="col-sm-6 text-end">
+    <%= link_to new_user_type_path, class: 'btn btn-primary' do %>
+        Add New User Type
+    <% end %>
+  </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>User Type</th>
+            </tr>
+        </thead>
+        <tbody>
+             <% @user_types.each do |user_type| %>
+                <%= content_tag :tr, id: dom_id(user_type), class: dom_class(user_type) do %>
+                    <td><%= link_to user_type.name, user_type %></td>
+                <% end %>
+             <% end %>
+        </tbody>
+    </table>
+</div>

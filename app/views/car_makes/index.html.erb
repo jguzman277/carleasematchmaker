@@ -1,0 +1,45 @@
+
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <h1>Car_makes</h1>
+  </div>
+
+  <div class="col-sm-6 text-end">
+  <%= link_to new_car_make_path, class: 'btn btn-primary' do %>
+    Add New Car make
+  <% end %>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+    
+
+            <th>Make</th>
+            <th>Website</th>
+            
+          <th></th>
+        
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @car_makes.each do |car_make| %>
+        <%= content_tag :tr, id: dom_id(car_make), class: dom_class(car_make) do %>
+          
+
+                      <td><%= car_make.make %></td>
+                      <td><%= car_make.website %></td>
+          
+          
+            <td><%= link_to 'Show', car_make %></td>
+          
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

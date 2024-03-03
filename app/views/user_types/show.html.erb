@@ -1,0 +1,16 @@
+<div class="page-header">
+  <%= link_to edit_user_type_path(@user_type), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+</div>
+
+<h3 class="mt-3">User Type</h3>
+
+<dl class="dl-horizontal mt-3">
+  <dt>User Type:</dt>
+  <dd><%= @user_type.name %></dd>
+</dl>
+
+<%= link_to user_types_path, class: 'btn btn-secondary' do %>
+    Back to All User Types
+<% end %>

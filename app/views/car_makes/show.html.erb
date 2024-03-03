@@ -1,0 +1,16 @@
+<div class="page-header">
+  <%= link_to car_makes_path, class: 'btn btn-default' do %>
+    All Car_makes
+  <% end %>
+  <%= link_to edit_car_make_path(@car_make), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show car_make</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Make:</dt>
+  <dd><%= @car_make.make %></dd>
+  <dt>Website:</dt>
+  <dd><%= @car_make.website %></dd>
+</dl>
