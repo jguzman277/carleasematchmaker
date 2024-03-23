@@ -1,5 +1,7 @@
 class UserTypesController < ApplicationController
     before_action :set_user_type, only: %i[ show edit update destroy ]
+    before_action :authenticate_user!
+    before_action :check_user_permissions
 
     def index
         @user_types = UserType.all.order(name: :asc)
@@ -59,6 +61,12 @@ class UserTypesController < ApplicationController
 
     def user_type_params
         params.require(:user_type).permit(:name)
+    end
+
+    def check_user_permissions
+        unless current_user.user_type.name == "Admin"
+            redirect_to root_path, alert: "You are not authorized to edit this record."
+        end
     end
 
 end

@@ -1,16 +1,57 @@
-<div class="page-header">
-  <%= link_to car_makes_path, class: 'btn btn-default' do %>
-    All Car_makes
-  <% end %>
-  <%= link_to edit_car_make_path(@car_make), class: 'btn btn-primary' do %>
-    Edit
-  <% end %>
-  <h1>Show car_make</h1>
-</div>
+<% if current_user.user_type.name == "Admin" %>
+  <div class="page-header">
+    <%= link_to edit_car_make_path(@car_make), class: 'btn btn-primary' do %>
+      Edit
+    <% end %>
+  </div>
+<% end %>
 
-<dl class="dl-horizontal">
+<dl class="dl-horizontal mt-3">
   <dt>Make:</dt>
   <dd><%= @car_make.make %></dd>
   <dt>Website:</dt>
   <dd><%= @car_make.website %></dd>
 </dl>
+
+<%= link_to car_makes_path, class: 'btn btn-secondary' do %>
+  Back to Car Makes
+<% end %>
+
+<div class="table-responsive mt-4">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Body Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @car_models.each do |model| %>
+        <tr>
+          <td>
+            <%= link_to model.model, model %>
+          </td>
+          <td>
+            <%= model.body_type.body_type %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<form>
+  <%= form_for @car_make do |f| %>
+    <%= f.fields_for :car_model do |t_f| %>
+      <div class="mb-3">
+        <%= t_f.label :model, class: "form-label" %>
+        <%= t_f.text_field :model, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= t_f.label :body_type_id, class: 'form-label text-capitalize' %>
+        <%= t_f.collection_select :body_type_id, BodyType.all.order(body_type: :asc), :id, :body_type, { }, { class: "form-control" } %>
+      </div>
+      <%= t_f.submit "Save Model", class: 'btn btn-primary text-capitalize' %>
+    <% end %>
+  <% end %>
+</form>

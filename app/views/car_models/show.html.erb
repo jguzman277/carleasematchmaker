@@ -1,0 +1,18 @@
+<div class="page-header">
+  <%= link_to car_models_path, class: 'btn btn-secondary' do %>
+    All Models
+  <% end %>
+  <%= link_to edit_car_model_path(@car_model), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1 class="mt-3">Model</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Make:</dt>
+  <dd><%= @car_model.car_make.make %></dd>
+  <dt>Model:</dt>
+  <dd><%= @car_model.model %></dd>
+  <dt>Body Type:</dt>
+  <dd><%= @car_model.body_type.body_type %></dd>
+</dl>

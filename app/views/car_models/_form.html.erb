@@ -1,0 +1,44 @@
+<%= form_with(model: car_model) do |form| %>
+  <% if car_model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(car_model.errors.count, "error") %> prohibited this car_model from being saved:</h2>
+
+      <ul>
+      <% car_model.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label "Make", class: 'form-label text-capitalize' %>
+    <%= form.collection_select :car_make_id, CarMake.all.order(make: :asc), :id, :make, { }, { class: "form-control" } %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :model, class: 'form-label' %>
+    <%= form.text_field :model, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :body_type_id, class: 'form-label text-capitalize' %>
+    <%= form.collection_select :body_type_id, BodyType.all.order(body_type: :asc), :id, :body_type, { }, { class: "form-control" } %>
+  </div>
+
+  <div class="mb-3">
+    <% if car_model.persisted? %>
+      <div class="float-end">
+        <%= link_to 'Destroy', car_model, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary text-capitalize' %>
+
+    <% if car_model.persisted? %>
+      <%= link_to "Cancel", car_model, class: "btn btn-secondary" %>
+    <% else %>
+      <%= link_to "Cancel", car_models_path, class: "btn btn-secondary" %>
+    <% end %>
+  </div>
+<% end %>

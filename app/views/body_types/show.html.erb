@@ -1,0 +1,16 @@
+<div class="page-header">
+ 
+  <%= link_to edit_body_type_path(@body_type), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1 class="mt-3">Body Type</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Body Type:</dt>
+  <dd><%= @body_type.body_type %></dd>
+</dl>
+
+ <%= link_to body_types_path, class: 'btn btn-secondary' do %>
+    Back To Body Types
+  <% end %>

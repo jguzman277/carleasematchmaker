@@ -1,7 +1,11 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :car_makes
+  resources :body_types
+  resources :car_makes do
+    resources :car_models
+  end
+  resources :body_types
   draw :madmin
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'

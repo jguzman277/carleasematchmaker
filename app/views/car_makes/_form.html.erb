@@ -21,19 +21,21 @@
     <%= form.text_field :website, class: 'form-control' %>
   </div>
 
-  <div class="mb-3">
-    <% if car_make.persisted? %>
-      <div class="float-end">
-        <%= link_to 'Destroy', car_make, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
-      </div>
-    <% end %>
+  <% if current_user.user_type.name == "Admin" %>
+    <div class="mb-3">
+      <% if car_make.persisted? %>
+        <div class="float-end">
+          <%= link_to 'Destroy', car_make, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        </div>
+      <% end %>
 
-    <%= form.submit class: 'btn btn-primary' %>
+      <%= form.submit class: 'btn btn-primary text-capitalize' %>
 
-    <% if car_make.persisted? %>
-      <%= link_to "Cancel", car_make, class: "btn btn-link" %>
-    <% else %>
-      <%= link_to "Cancel", car_makes_path, class: "btn btn-link" %>
-    <% end %>
-  </div>
+      <% if car_make.persisted? %>
+        <%= link_to "Cancel", car_make, class: "btn btn-secondary" %>
+      <% else %>
+        <%= link_to "Cancel", car_makes_path, class: "btn btn-secondary" %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>

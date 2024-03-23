@@ -131,6 +131,8 @@ GEM
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
       net-http
+    formtastic (5.0.0)
+      actionpack (>= 6.0.0)
     friendly_id (5.5.1)
       activerecord (>= 4.0.0)
     globalid (1.2.1)
@@ -356,6 +358,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise (~> 4.9)
+  formtastic (~> 5.0)
   friendly_id (~> 5.4)
   importmap-rails
   jbuilder

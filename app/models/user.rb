@@ -10,6 +10,4 @@ class User < ApplicationRecord
   has_many :notification_mentions, as: :record, dependent: :destroy, class_name: "Noticed::Event"
   has_many :services
   belongs_to :user_type
-
-  attribute :site_type_id, :string, default: "1"
 end

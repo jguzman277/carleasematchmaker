@@ -1,0 +1,9 @@
+<%= semantic_form_for @body_type do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :body_type, :label => "Body Type: ", :wrapper_html => { :style => "list-style-type:none;" } %>
+  <% end %>
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :button, :button_html => { :style => "list-style-type:none;", :class => "btn btn-primary text-capitalize" } %>
+    <%= f.action :cancel, :as => :link, :link_html => { :style => "list-style-type:none;", :class => "btn btn-secondary" } %>
+  <% end %>
+<% end %>
